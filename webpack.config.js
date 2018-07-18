@@ -2,11 +2,11 @@ const path = require("path");
 
 module.exports = {
   entry: "./draw.ts",
-  mode: "development",
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname)
   },
+  mode: "development",
   module: {
     rules: [
       {
@@ -18,6 +18,5 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"]
-  },
-  devtool: "source-map"
+  }
 };
