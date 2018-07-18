@@ -3,8 +3,8 @@ import * as d3 from "d3";
 import { drawLines } from "./lines";
 import { drawConnectedLines } from "./connectedLines";
 
-const width = 1500;
-const height = 900;
+const width = window.innerWidth;
+const height = window.innerHeight;
 
 const svgContainer: any = d3
   .select("#vis")
