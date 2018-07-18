@@ -1,4 +1,4 @@
-import { LineData, Point, appendLine, generatePoint } from "./lines";
+import { Point, appendLine, generatePoint } from "./lines";
 
 export function drawConnectedLines(
   width: number,
