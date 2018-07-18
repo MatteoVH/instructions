@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  entry: path.join(__dirname, "draw.js"),
+  entry: "./draw.ts",
   mode: "development",
   output: {
     filename: "bundle.js",
@@ -10,17 +10,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
-            plugins: [require("@babel/plugin-proposal-object-rest-spread")]
-          }
-        }
+        test: /\.ts$/,
+        use: ["ts-loader"],
+        exclude: /node_modules/
       }
     ]
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"]
   },
   devtool: "source-map"
 };
