@@ -4,7 +4,7 @@ import { drawLines } from "./lines";
 import { drawConnectedLines } from "./connectedLines";
 
 const width = window.innerWidth * 0.9;
-const height = window.innerHeight;
+const height = width * 0.625;
 
 const connectedLinesContainer: any = d3
   .select("#connected-lines")
