@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <head>
-    <style>
-        body {
-            margin: 0;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Montserrat" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <h1>Instructions</h1>
-    <p>A digital implementation of instruction art. Inspired by Sol LeWitt.</p>
-    <div id="lines"></div>
-    <div id="connected-lines"></div>
+    <h2>A digital implementation of instruction art. Inspired by Sol LeWitt.</h2>
+    <div id="lines" class="artboard">
+        <p class="instruction-description">Draw 50 random lines.</p>
+    </div>
+    <div id="connected-lines" class="artboard">
+        <p class="instruction-description">Pick 50 random points. Connect each set of points with a line.</p>
+    </div>
     <script src="bundle.js"></script>
 </body>

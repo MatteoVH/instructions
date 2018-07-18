@@ -3,7 +3,7 @@ import * as d3 from "d3";
 import { drawLines } from "./lines";
 import { drawConnectedLines } from "./connectedLines";
 
-const width = window.innerWidth;
+const width = window.innerWidth * 0.9;
 const height = window.innerHeight;
 
 const connectedLinesContainer: any = d3

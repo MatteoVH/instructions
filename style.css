@@ -1,0 +1,25 @@
+h1 {
+    margin: 0;
+    margin-top: 25px;
+    text-align: center;
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 5em;
+    line-height: 80px;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .75em;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.artboard {
+    margin: 0 auto;
+    padding: 2.5%;
+    width: 95%;
+}
+
+.instruction-description {
+    font-family: 'Inconsolata', serif;
+}
