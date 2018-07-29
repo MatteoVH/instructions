@@ -3,6 +3,7 @@ import * as d3 from "d3";
 import { drawLines } from "./lines";
 import { drawConnectedLines } from "./connectedLines";
 import { drawDriftLines } from "./driftLines";
+import { drawFollowLines } from "./followLines";
 
 const width = window.innerWidth * 0.95;
 const height = width * 0.625;
@@ -25,6 +26,13 @@ const driftLinesContainer: any = d3
   .attr("width", width)
   .attr("height", height);
 
+const followLinesContainer: any = d3
+  .select("#follow-lines")
+  .append("svg")
+  .attr("width", width)
+  .attr("height", height);
+
 drawLines(width, height, linesContainer);
 drawConnectedLines(width, height, connectedLinesContainer);
 drawDriftLines(width, height, driftLinesContainer);
+drawFollowLines(width, height, followLinesContainer);
