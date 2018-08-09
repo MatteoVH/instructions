@@ -1,5 +1,5 @@
 import { Point, generatePoint } from "./randomLines";
-import * as d3 from "d3";
+import * as d3 from "d3"
 import * as React from "react";
 
 export default class FollowLines extends React.Component<

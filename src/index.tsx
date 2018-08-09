@@ -5,6 +5,7 @@ import RandomLines from "./randomLines";
 import ConnectedLines from "./connectedLines";
 import DriftLines from "./driftLines";
 import FollowLines from "./followLines";
+import SpeckleLines from "./speckleLines";
 
 const width = window.innerWidth * 0.95;
 const height = width * 0.625;
@@ -25,6 +26,7 @@ function App() {
           <Link to="/connected-lines" className="instruction-description">connected lines</Link>
           <Link to="/drift-lines" className="instruction-description">drift lines</Link>
           <Link to="/follow-lines" className="instruction-description">follow lines</Link>
+          <Link to="/speckle-lines" className="instruction-description">speckle lines</Link>
         </nav>
       </div>
       <div>
@@ -45,6 +47,10 @@ function App() {
         <Route
           path="/follow-lines"
           render={props => <FollowLines width={width} height={height} />}
+        />
+        <Route
+          path="/speckle-lines"
+          render={props => <SpeckleLines width={width} height={height} />}
         />
           </Switch>
       </div>
