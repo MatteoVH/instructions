@@ -8,6 +8,7 @@ import FollowLines from "./followLines";
 import SpeckleLines from "./speckleLines";
 import LongLines from "./denseLines";
 import HydraLines from "./hydraLines";
+import Rays from "./rays";
 
 const width = window.innerWidth * 0.95;
 const height = width * 0.625;
@@ -24,13 +25,30 @@ function App() {
     <div>
       <div>
         <nav>
-          <Link to="/" className="instruction-description">random lines</Link>
-          <Link to="/connected-lines" className="instruction-description">connected lines</Link>
-          <Link to="/drift-lines" className="instruction-description">drift lines</Link>
-          <Link to="/follow-lines" className="instruction-description">follow lines</Link>
-          <Link to="/speckle-lines" className="instruction-description">speckle lines</Link>
-          <Link to="/dense-lines" className="instruction-description">dense lines</Link>
-          <Link to="/hydra-lines" className="instruction-description">hydra lines</Link>
+          <Link to="/" className="instruction-description">
+            random lines
+          </Link>
+          <Link to="/connected-lines" className="instruction-description">
+            connected lines
+          </Link>
+          <Link to="/drift-lines" className="instruction-description">
+            drift lines
+          </Link>
+          <Link to="/follow-lines" className="instruction-description">
+            follow lines
+          </Link>
+          <Link to="/speckle-lines" className="instruction-description">
+            speckle lines
+          </Link>
+          <Link to="/dense-lines" className="instruction-description">
+            dense lines
+          </Link>
+          <Link to="/hydra-lines" className="instruction-description">
+            hydra lines
+          </Link>
+          <Link to="/rays" className="instruction-description">
+            rays
+          </Link>
         </nav>
       </div>
       <div>
@@ -63,6 +81,10 @@ function App() {
           <Route
             path="/hydra-lines"
             render={props => <HydraLines width={width} height={height} />}
+          />
+          <Route
+            path="/rays"
+            render={props => <Rays width={width} height={height} />}
           />
         </Switch>
       </div>
