@@ -10,6 +10,7 @@ import LongLines from "./denseLines";
 import HydraLines from "./hydraLines";
 import Rays from "./rays";
 import Surge from "./surge";
+import Whirl from "./whirl";
 
 const width = window.innerWidth * 0.95;
 const height = width * 0.625;
@@ -53,6 +54,9 @@ function App() {
           <Link to="/surge" className="instruction-description">
             surge
           </Link>
+          <Link to="/whirl" className="instruction-description">
+            whirl
+          </Link>
         </nav>
       </div>
       <div>
@@ -93,6 +97,10 @@ function App() {
           <Route
             path="/surge"
             render={props => <Surge width={width} height={height} />}
+          />
+          <Route
+            path="/whirl"
+            render={props => <Whirl width={width} height={height} />}
           />
         </Switch>
       </div>
