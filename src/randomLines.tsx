@@ -57,10 +57,10 @@ export function generateNearbyPoint(
     startingPoint[1] - range[1] < 0 ? startingPoint[1] : range[1];
 
   let xMod = Math.random() * (maxPosRun + maxNegRun);
-  xMod -= 1.5 * maxNegRun;
+  xMod -= maxNegRun;
 
   let yMod = Math.random() * (maxPosClimb + maxNegClimb);
-  yMod -= 1.5 * maxNegClimb;
+  yMod -= maxNegClimb;
 
   return [startingPoint[0] + xMod, startingPoint[1] + yMod];
 }

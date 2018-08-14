@@ -55,9 +55,14 @@ function appendSpiral(
   center: Point
 ) {
   let points: Point[] = [];
-  for (let y = 0; y < height * 50; y++) {
+  for (let y = 0; y < height * 100; y++) {
     const p: PolarPoint = { magnitude: y / 100, rotation: (y / 50) * Math.PI };
-    points.push(polarToCartesian(p, center));
+    const cartesianPoint = polarToCartesian(p, center);
+    const driftedPoint = generateNearbyPoint(width, height, cartesianPoint, [
+      0.5,
+      0.5
+    ]);
+    points.push(driftedPoint);
   }
   appendLine(svgContainer, points);
 }
@@ -67,7 +72,7 @@ export function drawWhirl(
   height: number,
   svgContainer: any
 ): void {
-  for (let x = 0; x < 10; x++) {
-    appendSpiral(width, height, svgContainer, generatePoint(width, height));
+  for (let x = 0; x < 1; x++) {
+    appendSpiral(width, height, svgContainer, [width / 2, height / 2]);
   }
 }
