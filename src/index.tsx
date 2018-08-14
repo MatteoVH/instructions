@@ -9,6 +9,7 @@ import SpeckleLines from "./speckleLines";
 import LongLines from "./denseLines";
 import HydraLines from "./hydraLines";
 import Rays from "./rays";
+import Surge from "./surge";
 
 const width = window.innerWidth * 0.95;
 const height = width * 0.625;
@@ -49,6 +50,9 @@ function App() {
           <Link to="/rays" className="instruction-description">
             rays
           </Link>
+          <Link to="/surge" className="instruction-description">
+            surge
+          </Link>
         </nav>
       </div>
       <div>
@@ -85,6 +89,10 @@ function App() {
           <Route
             path="/rays"
             render={props => <Rays width={width} height={height} />}
+          />
+          <Route
+            path="/surge"
+            render={props => <Surge width={width} height={height} />}
           />
         </Switch>
       </div>
