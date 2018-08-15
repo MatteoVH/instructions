@@ -1,16 +1,16 @@
 import * as ReactDOM from "react-dom";
 import * as React from "react";
 import { Link, Switch, Route, MemoryRouter } from "react-router-dom";
-import RandomLines from "./randomLines";
-import ConnectedLines from "./connectedLines";
-import DriftLines from "./driftLines";
-import FollowLines from "./followLines";
-import SpeckleLines from "./speckleLines";
-import LongLines from "./denseLines";
-import HydraLines from "./hydraLines";
-import Rays from "./rays";
-import Surge from "./surge";
-import Whirl from "./whirl";
+import RandomLines from "./sketches/randomLines";
+import ConnectedLines from "./sketches/connectedLines";
+import DriftLines from "./sketches/driftLines";
+import FollowLines from "./sketches/followLines";
+import SpeckleLines from "./sketches/speckleLines";
+import LongLines from "./sketches/denseLines";
+import HydraLines from "./sketches/hydraLines";
+import Rays from "./sketches/rays";
+import Surge from "./sketches/surge";
+import Whirl from "./sketches/whirl";
 
 const width = window.innerWidth * 0.95;
 const height = width * 0.625;
