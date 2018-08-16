@@ -1,29 +1,24 @@
-import * as d3 from "d3";
-import * as React from "react";
+import { line, curveCatmullRom } from "d3-shape";
+
 export type Point = [number, number];
 
-export type LineData = [Point, Point];
+export type PolarPoint = {
+  magnitude: number;
+  rotation: number;
+};
 
-export default class RandomLines extends React.Component<
-  { width: number; height: number },
-  {}
-> {
-  componentDidMount() {
-    const linesContainer: any = d3
-      .select("#lines")
-      .append("svg")
-      .attr("width", this.props.width)
-      .attr("height", this.props.height);
-    drawLines(this.props.width, this.props.height, linesContainer);
-  }
-
-  render() {
-    return <div id="lines" className="artboard" />;
-  }
+export function polarToCartesian(
+  { magnitude, rotation }: PolarPoint,
+  reference: Point
+): Point {
+  return [
+    reference[0] + magnitude * Math.cos(rotation),
+    reference[1] + magnitude * Math.sin(rotation)
+  ];
 }
 
-export function appendLine(svgContainer: any, data: LineData) {
-  const lineGenerator = d3.line();
+export function appendLine(svgContainer: any, data: Point[]) {
+  const lineGenerator = line().curve(curveCatmullRom.alpha(0.5));
 
   svgContainer
     .append("path")
@@ -63,14 +58,4 @@ export function generateNearbyPoint(
   yMod -= maxNegClimb;
 
   return [startingPoint[0] + xMod, startingPoint[1] + yMod];
-}
-
-function generateLineData(width: number, height: number): LineData {
-  return [generatePoint(width, height), generatePoint(width, height)];
-}
-
-export function drawLines(width: number, height: number, svgContainer: any) {
-  for (let x = 0; x < 100; x++) {
-    appendLine(svgContainer, generateLineData(width, height));
-  }
 }
