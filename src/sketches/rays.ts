@@ -1,4 +1,5 @@
 import { Point, appendLine } from "../util";
+import { line, curveLinear } from "d3";
 
 type Drift = {
   x: number;
@@ -32,6 +33,6 @@ export default function drawRays(
       }
     );
 
-    appendLine(svgContainer, points);
+    appendLine(svgContainer, points, curveLinear);
   }
 }

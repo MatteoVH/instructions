@@ -1,4 +1,4 @@
-import { line, curveCatmullRom } from "d3-shape";
+import { line, curveCatmullRom, CurveFactoryLineOnly, Line } from "d3-shape";
 
 export type Point = [number, number];
 
@@ -17,12 +17,15 @@ export function polarToCartesian(
   ];
 }
 
-export function appendLine(svgContainer: any, data: Point[]) {
-  const lineGenerator = line().curve(curveCatmullRom.alpha(0.5));
-
+export function appendLine(
+  svgContainer: any,
+  data: Point[],
+  curveFactory: CurveFactoryLineOnly = curveCatmullRom.alpha(0.5)
+) {
+  const lineGenerator = line().curve(curveFactory);
   svgContainer
     .append("path")
-    .attr("d", lineGenerator(data))
+    .attr("d", lineGenerator.curve(curveFactory)(data))
     .attr("stroke", "black")
     .attr("stroke-width", 0.5)
     .attr("fill", "none");
