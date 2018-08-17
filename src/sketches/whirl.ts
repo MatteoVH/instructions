@@ -19,10 +19,12 @@ export default function drawSpiral(
       rotation: (y / 50) * Math.PI
     };
     const cartesianPoint = polarToCartesian(p, center);
-    const driftedPoint = generateNearbyPoint(width, height, cartesianPoint, [
-      0.5,
-      0.5
-    ]);
+    const driftedPoint = generateNearbyPoint(width, height, cartesianPoint, {
+      posY: 0.5,
+      negY: 0.5,
+      posX: 0.5,
+      negX: 0.5
+    });
     points.push(driftedPoint);
   }
   appendLine(svgContainer, points);

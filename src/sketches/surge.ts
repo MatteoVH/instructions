@@ -18,12 +18,12 @@ export default function drawSurge(
     points = points.map(
       ([x, y]): Point => {
         const driftMod = Math.pow(i * 0.000005, 0.85);
-        return generateNearbyPoint(
-          width,
-          height,
-          [x + 1, y],
-          [driftMod, driftMod]
-        );
+        return generateNearbyPoint(width, height, [x + 1, y], {
+          posY: driftMod,
+          negY: driftMod,
+          posX: driftMod,
+          negX: driftMod
+        });
       }
     );
 

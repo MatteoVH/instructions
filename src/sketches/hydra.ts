@@ -18,10 +18,18 @@ function drawHydraLinesImpl(
   depth: number
 ) {
   if (depth > 15) return;
+  const maxNeg = width / 10;
+  const maxPos = width / 10;
 
-  const range: Range2D = [100, 100];
+  const range: Range2D = {
+    posX: height / 100,
+    negX: width / 10,
+    posY: height / 100,
+    negY: height / 10
+  };
   const lastPoint: Point = points[points.length - 1];
   points.push(generateNearbyPoint(width, height, lastPoint, range));
+
   appendLine(svgContainer, points);
 
   drawHydraLinesImpl(width, height, svgContainer, [].concat(points), depth + 1);

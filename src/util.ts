@@ -37,22 +37,25 @@ export function generatePoint(width: number, height: number): Point {
   return [x, y];
 }
 
-export type Range2D = [number, number];
+export type Range2D = {
+  posY: number;
+  negY: number;
+  posX: number;
+  negX: number;
+};
 
 export function generateNearbyPoint(
   width: number,
   height: number,
   startingPoint: Point,
-  range: Range2D
+  { posY, negY, posX, negX }: Range2D
 ): Point {
   const maxPosRun =
-    startingPoint[0] + range[0] > width ? width - startingPoint[0] : range[0];
-  const maxNegRun =
-    startingPoint[0] - range[0] < 0 ? startingPoint[0] : range[0];
+    startingPoint[0] + posX > width ? width - startingPoint[0] : posX;
+  const maxNegRun = startingPoint[0] - negX < 0 ? startingPoint[0] : negX;
   const maxPosClimb =
-    startingPoint[1] + range[1] > height ? height - startingPoint[1] : range[1];
-  const maxNegClimb =
-    startingPoint[1] - range[1] < 0 ? startingPoint[1] : range[1];
+    startingPoint[1] + posY > height ? height - startingPoint[1] : posY;
+  const maxNegClimb = startingPoint[1] - negY < 0 ? startingPoint[1] : negY;
 
   let xMod = Math.random() * (maxPosRun + maxNegRun);
   xMod -= maxNegRun;
