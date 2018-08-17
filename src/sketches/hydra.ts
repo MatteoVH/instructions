@@ -6,7 +6,6 @@ export default function drawHydraLines(
   svgContainer: any
 ): void {
   const point: Point = [width - 1, height - 1];
-  console.log(point);
   drawHydraLinesImpl(width, height, svgContainer, [point], 1);
 }
 
