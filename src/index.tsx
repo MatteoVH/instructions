@@ -1,6 +1,6 @@
 import { render } from "react-dom";
 import * as React from "react";
-import { Link, Switch, Route, MemoryRouter } from "react-router-dom";
+import { Link, Switch, Route, MemoryRouter, Redirect } from "react-router-dom";
 import SketchCanvas from "./SketchCanvas";
 import sketches from "./sketches/index";
 
@@ -74,6 +74,7 @@ function App() {
               );
             }
           )}
+          <Redirect from="/" to="/whirl" />
         </Switch>
       </div>
     </div>
