@@ -15,7 +15,7 @@ export default function drawSpiral(
   let points: Point[] = [];
   for (let y = 0; y < height * 100; y++) {
     const p: PolarPoint = {
-      magnitude: y / 100,
+      magnitude: Math.pow(y, 1.6) / 50000,
       rotation: (y / 50) * Math.PI
     };
     const cartesianPoint = polarToCartesian(p, center);
