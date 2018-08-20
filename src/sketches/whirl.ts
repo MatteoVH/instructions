@@ -20,10 +20,10 @@ export default function drawSpiral(
     };
     const cartesianPoint = polarToCartesian(p, center);
     const driftedPoint = generateNearbyPoint(width, height, cartesianPoint, {
-      posY: 0.5,
-      negY: 0.5,
-      posX: 0.5,
-      negX: 0.5
+      posY: (0.5 * y) / 1000,
+      negY: (0.5 * y) / 1000,
+      posX: (0.5 * y) / 1000,
+      negX: (0.5 * y) / 1000
     });
     points.push(driftedPoint);
   }
