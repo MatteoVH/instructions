@@ -8,6 +8,8 @@ import drawHydra from "./hydra";
 import drawRays from "./rays";
 import drawSurge from "./surge";
 import drawSpiral from "./whirl";
+import drawSpiral2 from "./whirl2";
+import drawStar from "./star";
 
 export default [
   {
@@ -59,5 +61,15 @@ export default [
     path: "/whirl",
     linkName: "whirl",
     drawFunc: drawSpiral
+  },
+  {
+    path: "/whirl2",
+    linkName: "whirl 2",
+    drawFunc: drawSpiral2
+  },
+  {
+    path: "/star",
+    linkName: "star",
+    drawFunc: drawStar
   }
 ];

@@ -74,7 +74,7 @@ function App() {
               );
             }
           )}
-          <Redirect from="/" to="/whirl" />
+          <Redirect from="/" to="/star" />
         </Switch>
       </div>
     </div>
