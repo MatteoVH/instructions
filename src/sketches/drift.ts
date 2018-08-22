@@ -14,14 +14,24 @@ export default function drawDrift(
 
   appendLine(svgContainer, points);
 
-  for (let i = 0; i < width - 2; i++) {
-    points = points.map(
-      ([x, y]): Point => {
-        const drift = Math.random() + 0.5;
-        return [x + drift, y];
-      }
-    );
+  requestAnimationFrame(() => drawLine(svgContainer, width, points, 1));
+}
 
-    appendLine(svgContainer, points);
-  }
+function drawLine(
+  svgContainer: any,
+  width: number,
+  points: Point[],
+  depth: number
+) {
+  if (depth >= width - 2) return;
+  points = points.map(
+    ([x, y]): Point => {
+      const drift = Math.random() + 0.5;
+      return [x + drift, y];
+    }
+  );
+
+  appendLine(svgContainer, points);
+
+  requestAnimationFrame(() => drawLine(svgContainer, width, points, depth + 1));
 }

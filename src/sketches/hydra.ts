@@ -31,6 +31,26 @@ function drawHydraLinesImpl(
 
   appendLine(svgContainer, points);
 
-  drawHydraLinesImpl(width, height, svgContainer, [].concat(points), depth + 1);
-  drawHydraLinesImpl(width, height, svgContainer, [].concat(points), depth + 1);
+  setTimeout(() => {
+    requestAnimationFrame(() => {
+      drawHydraLinesImpl(
+        width,
+        height,
+        svgContainer,
+        [].concat(points),
+        depth + 1
+      );
+    });
+  }, 200);
+  setTimeout(() => {
+    requestAnimationFrame(() => {
+      drawHydraLinesImpl(
+        width,
+        height,
+        svgContainer,
+        [].concat(points),
+        depth + 1
+      );
+    });
+  }, 200);
 }
