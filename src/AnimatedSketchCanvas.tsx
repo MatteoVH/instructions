@@ -31,7 +31,7 @@ export default class AnimatedSketchCanvas extends React.Component<
         svgContainer,
         paramValue
       );
-      this.animate(paramValue + 0.001, svgContainer);
+      this.animate(paramValue + 0.0001, svgContainer);
     });
   }
 
