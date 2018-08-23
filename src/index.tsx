@@ -3,6 +3,8 @@ import * as React from "react";
 import { Link, Switch, Route, MemoryRouter, Redirect } from "react-router-dom";
 import SketchCanvas from "./SketchCanvas";
 import sketches from "./sketches/index";
+import AnimatedSketchCanvas from "./AnimatedSketchCanvas";
+import drawAnimatedStar from "./sketches/animatedStar";
 
 const width = window.innerWidth * 0.95;
 const height = width * 0.625;
@@ -37,6 +39,7 @@ class App extends React.Component<{}, {}> {
         sketch: {
           path: string;
           drawFunc: (width: number, height: number, svgContainer: any) => void;
+          param?: any;
         },
         index: number
       ) => {
@@ -61,12 +64,37 @@ class App extends React.Component<{}, {}> {
     return (
       <div>
         <div>
-          <nav>{this.renderLinks()}</nav>
+          <nav>
+            {[
+              this.renderLinks(),
+              <Link
+                key={100}
+                to="/animatedStar"
+                className="instruction-description"
+              >
+                animated star
+              </Link>
+            ]}
+          </nav>
         </div>
         <div>
           <Switch>
-            {this.renderRoutes()}
-            <Redirect from="/" to="/star" />
+            {[
+              this.renderRoutes(),
+              <Route
+                key={100}
+                path="/animatedStar"
+                render={props => (
+                  <AnimatedSketchCanvas
+                    width={width}
+                    height={height}
+                    drawFunc={drawAnimatedStar}
+                    defaultValue={4}
+                  />
+                )}
+              />
+            ]}
+            <Redirect from="/" to="/animatedStar" />
           </Switch>
         </div>
       </div>

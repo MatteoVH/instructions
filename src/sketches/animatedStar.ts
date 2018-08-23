@@ -9,14 +9,16 @@ import {
 export default function drawStar(
   width: number,
   height: number,
-  svgContainer: any
+  svgContainer: any,
+  parameterValue: number
 ): void {
   const center: Point = [width / 2, height / 2];
   let points: Point[] = [];
   for (let y = 0; y < height * 25; y++) {
     const unfilteredMagnitude = Math.pow(y * 4, 1.6) / 50000;
     const p: PolarPoint = {
-      magnitude: (Math.sin((y / 4) * Math.PI) + 2) * unfilteredMagnitude,
+      magnitude:
+        (Math.sin((y / parameterValue) * Math.PI) + 2) * unfilteredMagnitude,
       rotation: (y / 20) * Math.PI
     };
     const cartesianPoint = polarToCartesian(p, center);
