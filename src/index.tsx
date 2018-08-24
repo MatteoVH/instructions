@@ -7,7 +7,7 @@ import AnimatedSketchCanvas from "./AnimatedSketchCanvas";
 import drawAnimatedStar from "./sketches/animatedStar";
 
 const width = window.innerWidth * 0.95;
-const height = width * 0.625;
+const height = window.innerHeight * 0.95;
 
 class App extends React.Component<{}, {}> {
   renderLinks() {
