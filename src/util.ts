@@ -27,7 +27,7 @@ export function appendLine(
     .append("path")
     .attr("d", lineGenerator.curve(curveFactory)(data))
     .attr("stroke", "black")
-    .attr("stroke-width", 0.5)
+    .attr("stroke-width", 1.0)
     .attr("fill", "none");
 }
 

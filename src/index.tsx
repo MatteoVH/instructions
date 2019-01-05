@@ -5,6 +5,7 @@ import SketchCanvas from "./SketchCanvas";
 import sketches from "./sketches/index";
 import AnimatedSketchCanvas from "./AnimatedSketchCanvas";
 import drawAnimatedStar from "./sketches/animatedStar";
+import drawAudio from "./sketches/audio";
 
 const width = window.innerWidth * 0.95;
 const height = window.innerHeight * 0.95;
@@ -73,6 +74,9 @@ class App extends React.Component<{}, {}> {
                 className="instruction-description"
               >
                 animated star
+              </Link>,
+              <Link key={102} to="/audio" className="instruction-description">
+                audio
               </Link>
             ]}
           </nav>
@@ -83,18 +87,17 @@ class App extends React.Component<{}, {}> {
               this.renderRoutes(),
               <Route
                 key={100}
-                path="/animatedStar"
+                path="/audio"
                 render={props => (
                   <AnimatedSketchCanvas
                     width={width}
                     height={height}
-                    drawFunc={drawAnimatedStar}
-                    defaultValue={4}
+                    drawFunc={drawAudio}
                   />
                 )}
               />
             ]}
-            <Redirect from="/" to="/animatedStar" />
+            <Redirect from="/" to="/audio" />
           </Switch>
         </div>
       </div>
