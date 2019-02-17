@@ -10,6 +10,8 @@ import drawSurge from "./surge";
 import drawSpiral from "./whirl";
 import drawSpiral2 from "./whirl2";
 import drawStar from "./star";
+import drawBugPath from "./bugPath";
+import drawFiveCurves from "./fiveCurves";
 
 export default [
   {
@@ -71,5 +73,15 @@ export default [
     path: "/star",
     linkName: "star",
     drawFunc: drawStar
+  },
+  {
+    path: "/bug",
+    linkName: "bug",
+    drawFunc: drawBugPath
+  },
+  {
+    path: "/fiveCurves",
+    linkName: "fiveCurves",
+    drawFunc: drawFiveCurves
   }
 ];
