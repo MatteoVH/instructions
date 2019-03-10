@@ -9,7 +9,7 @@ export default function drawRandom(
   height: number,
   svgContainer: any
 ) {
-  for (let x = 0; x < 100; x++) {
+  for (let x = 0; x < (width + height) / 10; x++) {
     appendLine(svgContainer, generateLineData(width, height));
   }
 }

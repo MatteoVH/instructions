@@ -1,16 +1,20 @@
 import { render } from "react-dom";
 import * as React from "react";
-import { Link, Switch, Route, MemoryRouter, Redirect } from "react-router-dom";
-import SketchCanvas from "./SketchCanvas";
 import sketches from "./sketches/index";
-import AnimatedSketchCanvas from "./AnimatedSketchCanvas";
-import drawAnimatedStar from "./sketches/animatedStar";
+import Quatral from "./layouts/Quatral";
+import layouts, { Layout } from "./layouts/index";
+import drawConnected from "./sketches/connected";
 
 const width = window.innerWidth * 0.95;
 const height = window.innerHeight * 0.95;
 
-class App extends React.Component<{}, {}> {
-  renderLinks() {
+class App extends React.Component<{}, { layout: Layout; drawFunc: any }> {
+  constructor(props: {}) {
+    super(props);
+    this.state = { layout: Quatral, drawFunc: drawConnected };
+  }
+
+  renderSketches() {
     return sketches.map(
       (
         sketch: {
@@ -21,40 +25,41 @@ class App extends React.Component<{}, {}> {
         index: number
       ) => {
         return (
-          <Link
+          <button
             key={index}
-            to={sketch.path}
+            onClick={() => {
+              this.setState({ drawFunc: sketch.drawFunc });
+            }}
             className="instruction-description"
           >
             {sketch.linkName}
-          </Link>
+          </button>
         );
       }
     );
   }
 
-  renderRoutes() {
-    return sketches.map(
+  setLayout(component: any) {
+    this.setState({ layout: component });
+  }
+
+  renderLayouts() {
+    return layouts.map(
       (
-        sketch: {
-          path: string;
-          drawFunc: (width: number, height: number, svgContainer: any) => void;
-          param?: any;
+        layout: {
+          name: string;
+          component: any;
         },
         index: number
       ) => {
         return (
-          <Route
+          <button
             key={index}
-            path={sketch.path}
-            render={props => (
-              <SketchCanvas
-                width={width}
-                height={height}
-                drawFunc={sketch.drawFunc}
-              />
-            )}
-          />
+            onClick={() => this.setLayout(layout.component)}
+            className="instruction-description"
+          >
+            {layout.name}
+          </button>
         );
       }
     );
@@ -64,47 +69,30 @@ class App extends React.Component<{}, {}> {
     return (
       <div>
         <div>
+          <h2>sketches</h2>
           <nav>
             {[
-              this.renderLinks(),
-              <Link
-                key={100}
-                to="/animatedStar"
-                className="instruction-description"
-              >
-                animated star
-              </Link>
+              this.renderSketches()
+              // <a key={100} className="instruction-description">
+              //   animated star
+              // </a>
             ]}
           </nav>
         </div>
         <div>
-          <Switch>
-            {[
-              this.renderRoutes(),
-              <Route
-                key={100}
-                path="/animatedStar"
-                render={props => (
-                  <AnimatedSketchCanvas
-                    width={width}
-                    height={height}
-                    drawFunc={drawAnimatedStar}
-                    defaultValue={4}
-                  />
-                )}
-              />
-            ]}
-            <Redirect from="/" to="/animatedStar" />
-          </Switch>
+          <h2>layouts</h2>
+          <nav>{this.renderLayouts()}</nav>
+        </div>
+        <div className="artboard">
+          <this.state.layout
+            height={height}
+            width={width}
+            drawFunc={this.state.drawFunc}
+          />
         </div>
       </div>
     );
   }
 }
 
-render(
-  <MemoryRouter>
-    <App />
-  </MemoryRouter>,
-  document.getElementById("root")
-);
+render(<App />, document.getElementById("root"));

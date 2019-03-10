@@ -10,7 +10,7 @@ export default function drawStar(
   width: number,
   height: number,
   svgContainer: any,
-  parameterValue: number
+  parameterValue?: number
 ): void {
   const center: Point = [width / 2, height / 2];
   let points: Point[] = [];

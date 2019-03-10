@@ -6,7 +6,7 @@ export default function drawConnected(
   svgContainer: any
 ) {
   const points: Point[] = [];
-  for (let x = 0; x < 50; x++) {
+  for (let x = 0; x < (width + height) / 50; x++) {
     points.push(generatePoint(width, height));
   }
 

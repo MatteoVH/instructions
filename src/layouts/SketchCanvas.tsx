@@ -9,16 +9,25 @@ export default class SketchCanvas extends React.Component<
   },
   {}
 > {
-  sketchName: string = "whirl";
+  canvasId = Math.floor(Math.random() * 1000000);
 
   componentDidMount() {
-    const svgContainer = select(`#${this.sketchName} > svg`);
+    this.draw();
+  }
+
+  componentDidUpdate() {
+    this.draw();
+  }
+
+  draw() {
+    document.querySelector(`#canvas-${this.canvasId} > svg`).innerHTML = "";
+    const svgContainer = select(`#canvas-${this.canvasId} > svg`);
     this.props.drawFunc(this.props.width, this.props.height, svgContainer);
   }
 
   render() {
     return (
-      <div id={this.sketchName} className="artboard">
+      <div id={`canvas-${this.canvasId}`}>
         <svg width={this.props.width} height={this.props.height} />
       </div>
     );

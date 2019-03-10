@@ -1,4 +1,4 @@
-import { line, curveCatmullRom, CurveFactoryLineOnly, Line } from "d3-shape";
+import { line, curveCatmullRom, CurveFactoryLineOnly } from "d3-shape";
 
 export type Point = [number, number];
 

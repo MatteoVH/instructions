@@ -16,14 +16,11 @@ function drawHydraLinesImpl(
   points: Point[],
   depth: number
 ) {
-  if (depth > 15) return;
-  const maxNeg = width / 10;
-  const maxPos = width / 10;
-
+  if (depth > Math.log(width + height)) return;
   const range: Range2D = {
-    posX: height / 100,
+    posX: height / 20,
     negX: width / 10,
-    posY: height / 100,
+    posY: height / 20,
     negY: height / 10
   };
   const lastPoint: Point = points[points.length - 1];

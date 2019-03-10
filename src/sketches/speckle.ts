@@ -5,7 +5,7 @@ export default function drawSpeckle(
   height: number,
   svgContainer: any
 ): void {
-  for (let i = 0; i < 500; i++) {
+  for (let i = 0; i < (width + height) / 25; i++) {
     let points: Point[] = [];
     for (let j = 0; j < 5; j++) {
       points.push(generatePoint(width, height));
