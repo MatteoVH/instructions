@@ -18,6 +18,10 @@ h2 {
   margin-bottom: 25px;
 }
 
+svg {
+  vertical-align: middle;
+}
+
 .artboard {
   margin: 0 auto;
   width: 95%;
