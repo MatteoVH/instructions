@@ -12,7 +12,7 @@ export default class Quatral extends React.Component<
 > {
   render() {
     const { width, height, drawFunc } = this.props;
-    if (this.props.height > 50 && this.props.width > 50) {
+    if (height > 50 && width > 50) {
       return (
         <FlexColumn>
           <FlexRow>
@@ -22,8 +22,8 @@ export default class Quatral extends React.Component<
               drawFunc={drawFunc}
             />
             <Quatral
-              height={height / 2}
               width={width / 2}
+              height={height / 2}
               drawFunc={drawFunc}
             />
           </FlexRow>
@@ -34,8 +34,8 @@ export default class Quatral extends React.Component<
               drawFunc={drawFunc}
             />
             <Quatral
-              height={height / 2}
               width={width / 2}
+              height={height / 2}
               drawFunc={drawFunc}
             />
           </FlexRow>
