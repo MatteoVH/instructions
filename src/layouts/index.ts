@@ -9,7 +9,7 @@ export type Layout = React.ComponentType<{
 }>;
 
 export default [
-  { name: "Quatral", component: Quatral },
   { name: "Full page", component: SketchCanvas },
+  { name: "Quatral", component: Quatral },
   { name: "Fade", component: Fade }
 ];
