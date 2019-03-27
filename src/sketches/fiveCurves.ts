@@ -1,4 +1,5 @@
 import { generatePoint, appendLine } from "../util";
+import { shuffle } from "d3";
 
 export default function drawFiveCurves(
   width: number,
@@ -21,15 +22,7 @@ export default function drawFiveCurves(
     lineOrder.push(LineType.Straight);
   }
 
-  function shuffle<T>(a: Array<T>) {
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-  }
-
-  shuffle<LineType>(lineOrder);
+  shuffle(lineOrder);
 
   const firstPoint = generatePoint(width, height);
   let lastPoint = firstPoint;
