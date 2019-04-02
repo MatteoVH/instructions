@@ -9,6 +9,7 @@ import drawSwirl from "./swirl";
 import drawStar from "./star";
 import drawBugPath from "./bugPath";
 import drawFiveCurves from "./fiveCurves";
+import drawTangent from "./tangent";
 
 export default [
   {
@@ -54,5 +55,9 @@ export default [
   {
     linkName: "fiveCurves",
     drawFunc: drawFiveCurves
+  },
+  {
+    linkName: "tangent",
+    drawFunc: drawTangent
   }
 ];
