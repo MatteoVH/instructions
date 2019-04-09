@@ -9,7 +9,7 @@ import {
 export default function drawYarn(
   width: number,
   height: number,
-  svgContainer: any
+  canvasContext: any
 ): void {
   const center: Point = [width / 2, height / 2];
   let points: Point[] = [];
@@ -27,5 +27,5 @@ export default function drawYarn(
     });
     points.push(driftedPoint);
   }
-  appendLine(svgContainer, points);
+  appendLine(canvasContext, points);
 }

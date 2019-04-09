@@ -4,7 +4,7 @@ import { shuffle } from "d3";
 export default function drawFiveCurves(
   width: number,
   height: number,
-  svgContainer: any
+  canvasContext: any
 ): void {
   enum LineType {
     Straight,
@@ -46,7 +46,7 @@ export default function drawFiveCurves(
       points[points.length - 1] = firstPoint;
     }
 
-    appendLine(svgContainer, points);
+    appendLine(canvasContext, points);
 
     lastPoint = points[points.length - 1];
   }

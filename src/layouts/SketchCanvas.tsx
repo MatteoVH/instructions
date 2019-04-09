@@ -1,11 +1,16 @@
-import { select } from "d3-selection";
+import { select, Selection } from "d3-selection";
 import * as React from "react";
+import { Point } from "../util";
 
 export default class SketchCanvas extends React.Component<
   {
     width: number;
     height: number;
-    drawFunc: (width: number, height: number, svgContainer: any) => void;
+    drawFunc: (
+      width: number,
+      height: number,
+      canvasContext: CanvasRenderingContext2D
+    ) => void;
   },
   {}
 > {
@@ -20,16 +25,40 @@ export default class SketchCanvas extends React.Component<
   }
 
   draw() {
-    document.querySelector(`#canvas-${this.canvasId} > svg`).innerHTML = "";
-    const svgContainer = select(`#canvas-${this.canvasId} > svg`);
-    this.props.drawFunc(this.props.width, this.props.height, svgContainer);
+    const { width, height, drawFunc } = this.props;
+    let canvasContainer = select<HTMLCanvasElement, any>(
+      `#canvas-${this.canvasId}`
+    );
+    canvasContainer.node().innerHTML = "";
+    canvasContainer = canvasContainer
+      .append("canvas")
+      .attr("width", width)
+      .attr("height", height);
+    const context = this.scaleCanvasForHighDPI(width, height, canvasContainer);
+    drawFunc(width, height, context);
+  }
+
+  scaleCanvasForHighDPI(
+    width: number,
+    height: number,
+    canvas: Selection<HTMLCanvasElement, any, HTMLElement, any>
+  ): CanvasRenderingContext2D {
+    // Get the device pixel ratio, falling back to 1.
+    var dpr = window.devicePixelRatio || 1;
+    // Give the canvas pixel dimensions of their CSS
+    // size * the device pixel ratio.
+    canvas.attr("width", width * dpr);
+    canvas.attr("height", height * dpr);
+    canvas.style("width", width + "px");
+    canvas.style("height", height + "px");
+    var ctx = canvas.node().getContext("2d");
+    // Scale all drawing operations by the dpr, so you
+    // don't have to worry about the difference.
+    ctx.scale(dpr, dpr);
+    return ctx;
   }
 
   render() {
-    return (
-      <div id={`canvas-${this.canvasId}`}>
-        <svg width={this.props.width} height={this.props.height} />
-      </div>
-    );
+    return <div id={`canvas-${this.canvasId}`} />;
   }
 }

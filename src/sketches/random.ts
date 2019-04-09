@@ -7,9 +7,9 @@ function generateLineData(width: number, height: number): Point[] {
 export default function drawRandom(
   width: number,
   height: number,
-  svgContainer: any
+  canvasContext: any
 ) {
   for (let x = 0; x < (width + height) / 10; x++) {
-    appendLine(svgContainer, generateLineData(width, height));
+    appendLine(canvasContext, generateLineData(width, height));
   }
 }

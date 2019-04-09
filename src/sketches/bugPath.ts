@@ -3,7 +3,7 @@ import { Point, generatePoint, appendLine } from "../util";
 export default function drawBugPath(
   width: number,
   height: number,
-  svgContainer: any
+  canvasContext: any
 ): void {
   // setup a list of points
   const points: Point[] = [];
@@ -14,5 +14,5 @@ export default function drawBugPath(
     points.push(generatePoint(width, height));
   }
 
-  appendLine(svgContainer, points);
+  appendLine(canvasContext, points);
 }

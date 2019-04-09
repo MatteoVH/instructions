@@ -9,7 +9,7 @@ type Drift = {
 export default function drawRays(
   width: number,
   height: number,
-  svgContainer: any
+  canvasContext: any
 ): void {
   let points: Point[] = [];
 
@@ -18,7 +18,7 @@ export default function drawRays(
     points.push([1, y]);
   }
 
-  appendLine(svgContainer, points);
+  appendLine(canvasContext, points);
 
   for (let i = 1; i < width - 2; i++) {
     points = points.map(
@@ -33,6 +33,6 @@ export default function drawRays(
       }
     );
 
-    appendLine(svgContainer, points, curveLinear);
+    appendLine(canvasContext, points, curveLinear);
   }
 }

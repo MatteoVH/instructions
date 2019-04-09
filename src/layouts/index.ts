@@ -5,7 +5,7 @@ import Fade from "./Fade";
 export type Layout = React.ComponentType<{
   height: number;
   width: number;
-  drawFunc: (width: number, height: number, svgContainer: any) => void;
+  drawFunc: (width: number, height: number, canvasContext: any) => void;
 }>;
 
 export default [

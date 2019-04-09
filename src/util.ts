@@ -18,17 +18,17 @@ export function polarToCartesian(
 }
 
 export function appendLine(
-  svgContainer: any,
+  context: CanvasRenderingContext2D,
   data: Point[],
   curveFactory: CurveFactoryLineOnly = curveCatmullRom.alpha(0.5)
 ) {
   const lineGenerator = line().curve(curveFactory);
-  svgContainer
-    .append("path")
-    .attr("d", lineGenerator.curve(curveFactory)(data))
-    .attr("stroke", "black")
-    .attr("stroke-width", 0.5)
-    .attr("fill", "none");
+  lineGenerator.context(context);
+  context.beginPath();
+  lineGenerator(data);
+  context.lineWidth = 0.5;
+  context.strokeStyle = "black";
+  context.stroke();
 }
 
 export function generatePoint(width: number, height: number): Point {

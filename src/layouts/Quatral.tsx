@@ -6,7 +6,7 @@ export default class Quatral extends React.Component<
   {
     width: number;
     height: number;
-    drawFunc: (width: number, height: number, svgContainer: any) => void;
+    drawFunc: (width: number, height: number, canvasContext: any) => void;
   },
   {}
 > {

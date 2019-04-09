@@ -8,7 +8,17 @@ import drawConnected from "./sketches/connected";
 const width = window.innerWidth * 0.95;
 const height = window.innerHeight * 0.95;
 
-class App extends React.Component<{}, { layout: Layout; drawFunc: any }> {
+class App extends React.Component<
+  {},
+  {
+    layout: Layout;
+    drawFunc: (
+      width: number,
+      height: number,
+      canvasContext: CanvasRenderingContext2D
+    ) => void;
+  }
+> {
   constructor(props: {}) {
     super(props);
     this.state = { layout: Quatral, drawFunc: drawConnected };
@@ -20,7 +30,11 @@ class App extends React.Component<{}, { layout: Layout; drawFunc: any }> {
         sketch: {
           path: string;
           linkName: string;
-          drawFunc: (width: number, height: number, svgContainer: any) => void;
+          drawFunc: (
+            width: number,
+            height: number,
+            canvasContext: CanvasRenderingContext2D
+          ) => void;
         },
         index: number
       ) => {
@@ -48,20 +62,18 @@ class App extends React.Component<{}, { layout: Layout; drawFunc: any }> {
       (
         layout: {
           name: string;
-          component: any;
+          component: React.ElementType;
         },
         index: number
-      ) => {
-        return (
-          <button
-            key={index}
-            onClick={() => this.setLayout(layout.component)}
-            className="instruction-description"
-          >
-            {layout.name}
-          </button>
-        );
-      }
+      ) => (
+        <button
+          key={index}
+          onClick={() => this.setLayout(layout.component)}
+          className="instruction-description"
+        >
+          {layout.name}
+        </button>
+      )
     );
   }
 

@@ -9,7 +9,7 @@ import {
 export default function drawStar(
   width: number,
   height: number,
-  svgContainer: any,
+  canvasContext: any,
   parameterValue?: number
 ): void {
   const center: Point = [width / 2, height / 2];
@@ -31,5 +31,5 @@ export default function drawStar(
     });
     points.push(driftedPoint);
   }
-  appendLine(svgContainer, points);
+  appendLine(canvasContext, points);
 }

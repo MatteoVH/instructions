@@ -3,7 +3,7 @@ import { Point, appendLine } from "../util";
 export default function drawDrift(
   width: number,
   height: number,
-  svgContainer: any
+  canvasContext: any
 ): void {
   let points: Point[] = [];
 
@@ -12,7 +12,7 @@ export default function drawDrift(
     points.push([0, y]);
   }
 
-  appendLine(svgContainer, points);
+  appendLine(canvasContext, points);
 
   for (let i = 0; i < width - 2; i += 3) {
     points = points.map(
@@ -22,6 +22,6 @@ export default function drawDrift(
       }
     );
 
-    appendLine(svgContainer, points);
+    appendLine(canvasContext, points);
   }
 }
