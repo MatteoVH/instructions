@@ -11,11 +11,16 @@ import drawBugPath from "./bugPath";
 import drawFiveCurves from "./fiveCurves";
 import drawTangent from "./tangent";
 import drawAnimatedStar from "./animatedStar";
+import drawAnimatedConnected from "./animatedConnected";
 
 export default [
   {
     linkName: "random",
     drawFunc: drawRandom
+  },
+  {
+    linkName: "animated connected",
+    drawFunc: drawAnimatedConnected
   },
   {
     linkName: "connected",
