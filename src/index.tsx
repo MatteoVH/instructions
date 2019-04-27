@@ -82,14 +82,7 @@ class App extends React.Component<
       <div>
         <div>
           <h2>sketches</h2>
-          <nav>
-            {[
-              this.renderSketches()
-              // <a key={100} className="instruction-description">
-              //   animated star
-              // </a>
-            ]}
-          </nav>
+          <nav>{[this.renderSketches()]}</nav>
         </div>
         <div>
           <h2>layouts</h2>

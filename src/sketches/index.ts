@@ -10,6 +10,7 @@ import drawStar from "./star";
 import drawBugPath from "./bugPath";
 import drawFiveCurves from "./fiveCurves";
 import drawTangent from "./tangent";
+import drawAnimatedStar from "./animatedStar";
 
 export default [
   {
@@ -47,6 +48,10 @@ export default [
   {
     linkName: "star",
     drawFunc: drawStar
+  },
+  {
+    linkName: "animated star",
+    drawFunc: drawAnimatedStar
   },
   {
     linkName: "bug",

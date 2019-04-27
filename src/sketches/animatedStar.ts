@@ -6,11 +6,11 @@ import {
   appendLine
 } from "../util";
 
-export default function drawStar(
+export default function drawAnimatedStar(
   width: number,
   height: number,
   canvasContext: any,
-  parameterValue?: number
+  parameterValue: number = 4
 ): void {
   const center: Point = [width / 2, height / 2];
   let points: Point[] = [];
@@ -32,4 +32,9 @@ export default function drawStar(
     points.push(driftedPoint);
   }
   appendLine(canvasContext, points);
+
+  requestAnimationFrame(() => {
+    canvasContext.clearRect(0, 0, width, height);
+    drawAnimatedStar(width, height, canvasContext, parameterValue + 0.001);
+  });
 }
