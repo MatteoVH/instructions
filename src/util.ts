@@ -26,14 +26,14 @@ export function appendLine(
   lineGenerator.context(context);
   context.beginPath();
   lineGenerator(data);
-  context.lineWidth = 0.5;
+  context.lineWidth = 1;
   context.strokeStyle = "black";
   context.stroke();
 }
 
 export function generatePoint(width: number, height: number): Point {
-  const x = Math.random() * width;
-  const y = Math.random() * height;
+  const x = Math.random() * (width - 600) + 300;
+  const y = Math.random() * (height - 600) + 300;
   return [x, y];
 }
 

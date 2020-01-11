@@ -6,7 +6,7 @@ export default function drawConnected(
   canvasContext: any
 ) {
   const points: Point[] = [];
-  for (let x = 0; x < (width + height) / 50; x++) {
+  for (let x = 0; x < (width + height) / 70; x++) {
     points.push(generatePoint(width, height));
   }
   for (const point1 of points) {
