@@ -12,6 +12,7 @@ import drawFiveCurves from "./fiveCurves";
 import drawTangent from "./tangent";
 import drawAnimatedStar from "./animatedStar";
 import drawAnimatedConnected from "./animatedConnected";
+import drawFrame from "./frame";
 
 export default [
   {
@@ -69,5 +70,9 @@ export default [
   {
     linkName: "tangent",
     drawFunc: drawTangent
+  },
+  {
+    linkName: "frame",
+    drawFunc: drawFrame
   }
 ];
