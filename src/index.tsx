@@ -1,9 +1,9 @@
 import { render } from "react-dom";
 import * as React from "react";
 import sketches from "./sketches/index";
-import Quatral from "./layouts/Quatral";
 import layouts, { Layout } from "./layouts/index";
 import drawConnected from "./sketches/connected";
+import SketchCanvas from "./layouts/SketchCanvas";
 
 const width = window.innerWidth * 0.95;
 const height = window.innerHeight * 0.95;
@@ -21,7 +21,7 @@ class App extends React.Component<
 > {
   constructor(props: {}) {
     super(props);
-    this.state = { layout: Quatral, drawFunc: drawConnected };
+    this.state = { layout: SketchCanvas, drawFunc: drawConnected };
   }
 
   renderSketches() {

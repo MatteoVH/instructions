@@ -12,6 +12,8 @@ import drawFiveCurves from "./fiveCurves";
 import drawTangent from "./tangent";
 import drawAnimatedStar from "./animatedStar";
 import drawAnimatedConnected from "./animatedConnected";
+import drawMetropolis from "./metropolis";
+import drawStrata from "./strata";
 
 export default [
   {
@@ -69,5 +71,13 @@ export default [
   {
     linkName: "tangent",
     drawFunc: drawTangent
+  },
+  {
+    linkName: "strata",
+    drawFunc: drawStrata
+  },
+  {
+    linkName: "metropolis",
+    drawFunc: drawMetropolis
   }
 ];
