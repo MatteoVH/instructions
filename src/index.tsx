@@ -4,6 +4,7 @@ import sketches from "./sketches/index";
 import layouts, { Layout } from "./layouts/index";
 import drawConnected from "./sketches/connected";
 import SketchCanvas from "./layouts/SketchCanvas";
+import drawArpeggio from "./sketches/arpeggio";
 
 const width = window.innerWidth * 0.95;
 const height = window.innerHeight * 0.95;
@@ -21,7 +22,7 @@ class App extends React.Component<
 > {
   constructor(props: {}) {
     super(props);
-    this.state = { layout: SketchCanvas, drawFunc: drawConnected };
+    this.state = { layout: SketchCanvas, drawFunc: drawArpeggio };
   }
 
   renderSketches() {

@@ -14,6 +14,7 @@ import drawAnimatedStar from "./animatedStar";
 import drawAnimatedConnected from "./animatedConnected";
 import drawMetropolis from "./metropolis";
 import drawStrata from "./strata";
+import drawArpeggio from "./arpeggio";
 
 export default [
   {
@@ -79,5 +80,9 @@ export default [
   {
     linkName: "metropolis",
     drawFunc: drawMetropolis
+  },
+  {
+    linkName: "arpeggio",
+    drawFunc: drawArpeggio
   }
 ];

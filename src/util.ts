@@ -13,7 +13,7 @@ export function polarToCartesian(
 ): Point {
   return [
     reference[0] + magnitude * Math.cos(rotation),
-    reference[1] + magnitude * Math.sin(rotation)
+    reference[1] + magnitude * Math.sin(rotation),
   ];
 }
 
