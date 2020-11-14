@@ -15,74 +15,79 @@ import drawAnimatedConnected from "./animatedConnected";
 import drawMetropolis from "./metropolis";
 import drawStrata from "./strata";
 import drawArpeggio from "./arpeggio";
+import drawBounce from "./bounce";
 
 export default [
   {
     linkName: "random",
-    drawFunc: drawRandom
+    drawFunc: drawRandom,
   },
   {
     linkName: "animated connected",
-    drawFunc: drawAnimatedConnected
+    drawFunc: drawAnimatedConnected,
   },
   {
     linkName: "connected",
-    drawFunc: drawConnected
+    drawFunc: drawConnected,
   },
   {
     linkName: "drift",
-    drawFunc: drawDrift
+    drawFunc: drawDrift,
   },
   {
     linkName: "speckle",
-    drawFunc: drawSpeckle
+    drawFunc: drawSpeckle,
   },
   {
     linkName: "hydra",
-    drawFunc: drawHydra
+    drawFunc: drawHydra,
   },
   {
     linkName: "rays",
-    drawFunc: drawRays
+    drawFunc: drawRays,
   },
   {
     linkName: "yarn",
-    drawFunc: drawYarn
+    drawFunc: drawYarn,
   },
   {
     linkName: "swirl",
-    drawFunc: drawSwirl
+    drawFunc: drawSwirl,
   },
   {
     linkName: "star",
-    drawFunc: drawStar
+    drawFunc: drawStar,
   },
   {
     linkName: "animated star",
-    drawFunc: drawAnimatedStar
+    drawFunc: drawAnimatedStar,
   },
   {
     linkName: "bug",
-    drawFunc: drawBugPath
+    drawFunc: drawBugPath,
   },
   {
     linkName: "fiveCurves",
-    drawFunc: drawFiveCurves
+    drawFunc: drawFiveCurves,
   },
   {
     linkName: "tangent",
-    drawFunc: drawTangent
+    drawFunc: drawTangent,
   },
   {
     linkName: "strata",
-    drawFunc: drawStrata
+    drawFunc: drawStrata,
   },
   {
     linkName: "metropolis",
-    drawFunc: drawMetropolis
+    drawFunc: drawMetropolis,
   },
   {
     linkName: "arpeggio",
-    drawFunc: drawArpeggio
-  }
+    drawFunc: drawArpeggio,
+  },
+  {
+    linkName: "bounce",
+    drawFunc: drawBounce,
+  },
 ];

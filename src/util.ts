@@ -65,3 +65,7 @@ export function generateNearbyPoint(
 
   return [startingPoint[0] + xMod, startingPoint[1] + yMod];
 }
+
+export function generateNumberInRange(min: number, max: number) {
+  return Math.random() * (max - min) + min;
+}
