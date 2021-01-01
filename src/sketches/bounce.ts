@@ -1,7 +1,6 @@
 import {
   appendLine,
   Point,
-  generatePoint,
   generateNumberInRange,
 } from "../util";
 
@@ -25,6 +24,9 @@ export default function drawBounce(
     const randomEnumValue = enumValues[randomIndex];
     return randomEnumValue;
   }
+
+  console.log('width', width);
+  console.log('height', height);
 
   const side = randomEnum(Side);
 
@@ -58,6 +60,7 @@ export default function drawBounce(
     };
 
     const side = getSideFromPoint(point);
+    console.log('new side determined as', Side[side]);
     const minimalDirection = direction % (2 * Math.PI);
     let newDirection;
     let theta;
@@ -72,6 +75,7 @@ export default function drawBounce(
     switch (side) {
       case Side.TOP:
         if (minimalDirection > Math.PI / 2) {
+          console.log('going down and left');
           theta = Math.PI - minimalDirection;
           newDirection = Math.PI + theta;
           newSlope = Math.tan(newDirection);
@@ -84,11 +88,12 @@ export default function drawBounce(
             newPoint = [bottomXIntercept, height];
           }
         } else {
+          console.log('going down and right');
           theta = minimalDirection;
           newDirection = 2 * Math.PI - theta;
           newSlope = Math.tan(newDirection);
           xIntercept = point[1] - newSlope * point[0];
-          rightYIntercept = newSlope * width + xIntercept;
+          rightYIntercept = xIntercept + newSlope * width;
           bottomXIntercept = (height - xIntercept) / newSlope;
           if (rightYIntercept > 0 && rightYIntercept < height) {
             newPoint = [width, rightYIntercept];
@@ -96,10 +101,12 @@ export default function drawBounce(
             newPoint = [bottomXIntercept, height];
           }
         }
+        break;
       case Side.RIGHT:
         if (minimalDirection > (3 / 2) * Math.PI) {
+          console.log('going down and left');
           theta = minimalDirection - (3 / 2) * Math.PI;
-          newDirection = (3 / 2) * Math.PI - theta;
+          newDirection = (3 / 2) * Math.PI + theta;
           newSlope = Math.tan(newDirection);
           xIntercept = point[1] - newSlope * point[0];
           leftYIntercept = xIntercept;
@@ -110,7 +117,8 @@ export default function drawBounce(
             newPoint = [bottomXIntercept, height];
           }
         } else {
-          theta = Math.PI / 2 - minimalDirection;
+          console.log('going up and left');
+          theta = 3 * Math.PI / 2 - minimalDirection;
           newDirection = Math.PI / 2 + theta;
           newSlope = Math.tan(newDirection);
           xIntercept = point[1] - newSlope * point[0];
@@ -122,34 +130,42 @@ export default function drawBounce(
             newPoint = [topXIntercept, 0];
           }
         }
+        break;
       case Side.BOTTOM:
+        console.log('BOTTOM');
         if (minimalDirection > (3 / 2) * Math.PI) {
+          console.log('going up and right');
           theta = 2 * Math.PI - minimalDirection;
           newDirection = theta;
           newSlope = Math.tan(newDirection);
           xIntercept = point[1] - newSlope * point[0];
           rightYIntercept = xIntercept + newSlope * width;
           topXIntercept = -xIntercept / newSlope;
+          console.log('bottom rightYIntercept', rightYIntercept);
           if (rightYIntercept > 0 && rightYIntercept < height) {
-            newPoint = [width, leftYIntercept];
+            newPoint = [width, rightYIntercept];
           } else {
             newPoint = [topXIntercept, 0];
           }
         } else {
+          console.log('going up and left');
           theta = minimalDirection - Math.PI;
           newDirection = Math.PI - theta;
           newSlope = Math.tan(newDirection);
           xIntercept = point[1] - newSlope * point[0];
           leftYIntercept = xIntercept;
           topXIntercept = -xIntercept / newSlope;
+          console.log('bottom leftYIntercept', leftYIntercept);
           if (leftYIntercept > 0 && leftYIntercept < height) {
             newPoint = [0, leftYIntercept];
           } else {
             newPoint = [topXIntercept, 0];
           }
         }
+        break;
       case Side.LEFT:
         if (minimalDirection < Math.PI) {
+          console.log('going up and right');
           theta = minimalDirection - Math.PI / 2;
           newDirection = Math.PI / 2 - theta;
           newSlope = Math.tan(newDirection);
@@ -157,11 +173,12 @@ export default function drawBounce(
           rightYIntercept = xIntercept + newSlope * width;
           topXIntercept = -xIntercept / newSlope;
           if (rightYIntercept > 0 && rightYIntercept < height) {
-            newPoint = [width, leftYIntercept];
+            newPoint = [width, rightYIntercept];
           } else {
             newPoint = [topXIntercept, 0];
           }
         } else {
+          console.log('going down and right');
           theta = (3 / 2) * Math.PI - minimalDirection;
           newDirection = (3 / 2) * Math.PI + theta;
           newSlope = Math.tan(newDirection);
@@ -174,8 +191,10 @@ export default function drawBounce(
             newPoint = [bottomXIntercept, height];
           }
         }
+        break;
     }
 
+    console.log('adding line', point, newPoint);
     appendLine(canvasContext, [point, newPoint]);
 
     if (level < 100) {
