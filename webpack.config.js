@@ -4,7 +4,7 @@ module.exports = {
   entry: "./src/index.tsx",
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname)
+    path: path.resolve(__dirname),
   },
   mode: "development",
   module: {
@@ -12,11 +12,16 @@ module.exports = {
       {
         test: /\.ts(x)?$/,
         use: ["ts-loader"],
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.mp3$/,
+        loader: "file-loader",
+        query: { name: "static/media/[name].[hash:8].[ext]" },
+      },
+    ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"]
-  }
+    extensions: [".tsx", ".ts", ".js", ".mp3"],
+  },
 };

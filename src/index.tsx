@@ -6,6 +6,7 @@ import drawConnected from "./sketches/connected";
 import SketchCanvas from "./layouts/SketchCanvas";
 import drawArpeggio from "./sketches/arpeggio";
 import drawBounce from "./sketches/bounce";
+import drawSwirlViz from "./sketches/swirlViz";
 
 const width = window.innerWidth * 0.95;
 const height = window.innerHeight * 0.95;
@@ -23,7 +24,7 @@ class App extends React.Component<
 > {
   constructor(props: {}) {
     super(props);
-    this.state = { layout: SketchCanvas, drawFunc: drawBounce };
+    this.state = { layout: SketchCanvas, drawFunc: drawSwirlViz };
   }
 
   renderSketches() {
