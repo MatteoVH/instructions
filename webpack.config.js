@@ -7,6 +7,7 @@ module.exports = {
     path: path.resolve(__dirname),
   },
   mode: "development",
+  devtool: "inline-source-map",
   module: {
     rules: [
       {
@@ -16,8 +17,7 @@ module.exports = {
       },
       {
         test: /\.mp3$/,
-        loader: "file-loader",
-        query: { name: "static/media/[name].[hash:8].[ext]" },
+        use: ["file-loader"],
       },
     ],
   },
