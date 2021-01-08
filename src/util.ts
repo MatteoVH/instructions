@@ -44,6 +44,11 @@ export type Range2D = {
   negX: number;
 };
 
+export type Range = {
+  max: number;
+  min: number;
+};
+
 export function generateNearbyPoint(
   width: number,
   height: number,

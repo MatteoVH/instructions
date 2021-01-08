@@ -16,6 +16,7 @@ import drawMetropolis from "./metropolis";
 import drawStrata from "./strata";
 import drawArpeggio from "./arpeggio";
 import drawBounce from "./bounce";
+import drawSwirlViz from "./swirlViz";
 
 export default [
   {
@@ -53,6 +54,10 @@ export default [
   {
     linkName: "swirl",
     drawFunc: drawSwirl,
+  },
+  {
+    linkName: "animated swirl",
+    drawFunc: drawSwirlViz,
   },
   {
     linkName: "star",
