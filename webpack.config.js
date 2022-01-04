@@ -1,4 +1,5 @@
 const path = require("path");
+const PnpWebpackPlugin = require("pnp-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -12,7 +13,8 @@ module.exports = {
     rules: [
       {
         test: /\.ts(x)?$/,
-        use: ["ts-loader"],
+        loader: require.resolve("ts-loader"),
+        options: PnpWebpackPlugin.tsLoaderOptions(),
         exclude: /node_modules/,
       },
       {
@@ -23,5 +25,12 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".mp3"],
+    plugins: [PnpWebpackPlugin],
+  },
+  resolveLoader: {
+    plugins: [PnpWebpackPlugin.moduleLoader(module)],
+  },
+  devServer: {
+    static: __dirname,
   },
 };
