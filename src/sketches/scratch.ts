@@ -12,7 +12,7 @@ const VERTICAL_SPACING = 5;
 export default function drawScratch(
   width: number,
   height: number,
-  canvasContext: any
+  canvasContext: CanvasRenderingContext2D
 ): void {
   const lines: Line[] = [];
 
