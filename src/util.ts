@@ -1,6 +1,7 @@
 import { line, curveCatmullRom, CurveFactoryLineOnly } from "d3-shape";
 
 export type Point = [number, number];
+export type Line = Point[];
 
 export type PolarPoint = {
   magnitude: number;

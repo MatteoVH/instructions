@@ -2,10 +2,7 @@ import { render } from "react-dom";
 import * as React from "react";
 import sketches from "./sketches/index";
 import layouts, { Layout } from "./layouts/index";
-import drawConnected from "./sketches/connected";
 import SketchCanvas from "./layouts/SketchCanvas";
-import drawArpeggio from "./sketches/arpeggio";
-import drawBounce from "./sketches/bounce";
 import drawSwirlViz from "./sketches/swirlViz";
 
 const width = window.innerWidth * 0.95;

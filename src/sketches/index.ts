@@ -17,6 +17,7 @@ import drawStrata from "./strata";
 import drawArpeggio from "./arpeggio";
 import drawBounce from "./bounce";
 import drawSwirlViz from "./swirlViz";
+import drawScratch from "./scratch";
 
 export default [
   {
@@ -94,5 +95,9 @@ export default [
   {
     linkName: "bounce",
     drawFunc: drawBounce,
+  },
+  {
+    linkName: "scratch",
+    drawFunc: drawScratch,
   },
 ];
