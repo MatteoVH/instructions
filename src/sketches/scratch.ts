@@ -7,13 +7,14 @@ import {
   Point,
 } from "../util";
 
-const VERTICAL_SPACING = 5;
-
 export default function drawScratch(
   width: number,
   height: number,
-  canvasContext: CanvasRenderingContext2D
+  canvasContext: CanvasRenderingContext2D,
+  controlValues: [verticalSpacing: number]
 ): void {
+  const VERTICAL_SPACING = controlValues[0];
+
   const lines: Line[] = [];
 
   //make a starting line
@@ -44,7 +45,14 @@ export default function drawScratch(
     lines.push(newLine);
   }
 
-  for (const line of lines) {
-    appendLine(canvasContext, line, curveBasis);
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+
+    const darkness = (i / lines.length) * 255;
+    const red = darkness;
+    const green = 255 - darkness;
+    const blue = darkness;
+    const color = `rgb(${red}, ${green}, ${blue})`;
+    appendLine(canvasContext, line, curveBasis, color);
   }
 }

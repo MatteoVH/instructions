@@ -19,6 +19,14 @@ import drawBounce from "./bounce";
 import drawSwirlViz from "./swirlViz";
 import drawScratch from "./scratch";
 
+export enum ControlType {
+  Number = "number",
+}
+
+export enum InterfaceType {
+  Slider = "slider",
+}
+
 export default [
   {
     linkName: "random",
@@ -99,5 +107,12 @@ export default [
   {
     linkName: "scratch",
     drawFunc: drawScratch,
+    controls: [
+      {
+        name: "Vertical Spacing",
+        type: ControlType.Number,
+        interface: InterfaceType.Slider,
+      },
+    ],
   },
 ];

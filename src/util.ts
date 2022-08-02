@@ -21,14 +21,15 @@ export function polarToCartesian(
 export function appendLine(
   context: CanvasRenderingContext2D,
   data: Point[],
-  curveFactory: CurveFactoryLineOnly = curveCatmullRom.alpha(0.5)
+  curveFactory: CurveFactoryLineOnly = curveCatmullRom.alpha(0.5),
+  color?: string
 ) {
   const lineGenerator = line().curve(curveFactory);
   lineGenerator.context(context);
   context.beginPath();
   lineGenerator(data);
   context.lineWidth = 0.5;
-  context.strokeStyle = "black";
+  context.strokeStyle = color ?? "black";
   context.stroke();
 }
 

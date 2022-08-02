@@ -7,11 +7,12 @@ export default class Quatral extends React.Component<
     width: number;
     height: number;
     drawFunc: (width: number, height: number, canvasContext: any) => void;
+    controlValues?: any[];
   },
   {}
 > {
   render() {
-    const { width, height, drawFunc } = this.props;
+    const { width, height, drawFunc, controlValues } = this.props;
     if (height > 50 && width > 50) {
       return (
         <FlexColumn>
@@ -20,11 +21,13 @@ export default class Quatral extends React.Component<
               width={width / 2}
               height={height / 2}
               drawFunc={drawFunc}
+              controlValues={controlValues}
             />
             <Quatral
               width={width / 2}
               height={height / 2}
               drawFunc={drawFunc}
+              controlValues={controlValues}
             />
           </FlexRow>
           <FlexRow>
@@ -32,17 +35,26 @@ export default class Quatral extends React.Component<
               width={width / 2}
               height={height / 2}
               drawFunc={drawFunc}
+              controlValues={controlValues}
             />
             <Quatral
               width={width / 2}
               height={height / 2}
               drawFunc={drawFunc}
+              controlValues={controlValues}
             />
           </FlexRow>
         </FlexColumn>
       );
     } else {
-      return <SketchCanvas width={width} height={height} drawFunc={drawFunc} />;
+      return (
+        <SketchCanvas
+          width={width}
+          height={height}
+          drawFunc={drawFunc}
+          controlValues={controlValues}
+        />
+      );
     }
   }
 }

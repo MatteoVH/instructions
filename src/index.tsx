@@ -1,12 +1,30 @@
 import { render } from "react-dom";
 import * as React from "react";
-import sketches from "./sketches/index";
+import sketches, { ControlType, InterfaceType } from "./sketches/index";
 import layouts, { Layout } from "./layouts/index";
 import SketchCanvas from "./layouts/SketchCanvas";
 import drawSwirlViz from "./sketches/swirlViz";
+import drawScratch from "./sketches/scratch";
+import Slider from "@mui/material/Slider";
+import styled from "@emotion/styled";
+
+const ControlContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const Controls = styled.div`
+  width: 500px;
+`;
 
 const width = window.innerWidth * 0.95;
 const height = window.innerHeight * 0.95;
+
+interface Control {
+  name: string;
+  type: ControlType;
+  interface: InterfaceType;
+}
 
 class App extends React.Component<
   {},
@@ -15,13 +33,21 @@ class App extends React.Component<
     drawFunc: (
       width: number,
       height: number,
-      canvasContext: CanvasRenderingContext2D
+      canvasContext: CanvasRenderingContext2D,
+      controlValues?: any[]
     ) => void;
+    controls: Control[];
+    controlValues: any[];
   }
 > {
   constructor(props: {}) {
     super(props);
-    this.state = { layout: SketchCanvas, drawFunc: drawSwirlViz };
+    this.state = {
+      layout: SketchCanvas,
+      drawFunc: drawScratch,
+      controls: sketches[sketches.length - 1].controls,
+      controlValues: [5],
+    };
   }
 
   renderSketches() {
@@ -35,6 +61,7 @@ class App extends React.Component<
             height: number,
             canvasContext: CanvasRenderingContext2D
           ) => void;
+          controls: Control[];
         },
         index: number
       ) => {
@@ -42,7 +69,10 @@ class App extends React.Component<
           <button
             key={index}
             onClick={() => {
-              this.setState({ drawFunc: sketch.drawFunc });
+              this.setState({
+                drawFunc: sketch.drawFunc,
+                controls: sketch.controls,
+              });
             }}
             className="instruction-description"
           >
@@ -77,6 +107,10 @@ class App extends React.Component<
     );
   }
 
+  handleControlValueChange(event: any, value: number) {
+    this.setState({ controlValues: [value] });
+  }
+
   render() {
     return (
       <div>
@@ -88,11 +122,33 @@ class App extends React.Component<
           <h2>layouts</h2>
           <nav>{this.renderLayouts()}</nav>
         </div>
+        {this.state.controls?.length > 0 && (
+          <ControlContainer>
+            <Controls>
+              {this.state.controls?.map((control) => {
+                return (
+                  <>
+                    <div>{control.name}</div>
+                    <Slider
+                      defaultValue={5}
+                      min={-25}
+                      max={25}
+                      step={1}
+                      marks
+                      onChange={this.handleControlValueChange.bind(this)}
+                    ></Slider>
+                  </>
+                );
+              })}
+            </Controls>
+          </ControlContainer>
+        )}
         <div className="artboard">
           <this.state.layout
             height={height}
             width={width}
             drawFunc={this.state.drawFunc}
+            controlValues={this.state.controlValues}
           />
         </div>
       </div>

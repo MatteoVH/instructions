@@ -9,8 +9,10 @@ export default class SketchCanvas extends React.Component<
     drawFunc: (
       width: number,
       height: number,
-      canvasContext: CanvasRenderingContext2D
+      canvasContext: CanvasRenderingContext2D,
+      controlValues?: {}
     ) => void;
+    controlValues?: any[];
   },
   {}
 > {
@@ -25,7 +27,7 @@ export default class SketchCanvas extends React.Component<
   }
 
   draw() {
-    const { width, height, drawFunc } = this.props;
+    const { width, height, drawFunc, controlValues } = this.props;
     let canvasContainer = select<HTMLCanvasElement, any>(
       `#canvas-${this.canvasId}`
     );
@@ -35,7 +37,7 @@ export default class SketchCanvas extends React.Component<
       .attr("width", width)
       .attr("height", height);
     const context = this.scaleCanvasForHighDPI(width, height, canvasContainer);
-    drawFunc(width, height, context);
+    drawFunc(width, height, context, controlValues);
   }
 
   scaleCanvasForHighDPI(
