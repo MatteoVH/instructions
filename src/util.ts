@@ -22,13 +22,14 @@ export function appendLine(
   context: CanvasRenderingContext2D,
   data: Point[],
   curveFactory: CurveFactoryLineOnly = curveCatmullRom.alpha(0.5),
-  color?: string
+  color?: string,
+  lineWidth = 0.5
 ) {
   const lineGenerator = line().curve(curveFactory);
   lineGenerator.context(context);
   context.beginPath();
   lineGenerator(data);
-  context.lineWidth = 0.5;
+  context.lineWidth = lineWidth;
   context.strokeStyle = color ?? "black";
   context.stroke();
 }

@@ -1,4 +1,4 @@
-import { curveBasis } from "d3";
+import { curveBasis, curveBasisClosed } from "d3";
 import {
   appendLine,
   generateNearbyPoint,
@@ -15,6 +15,8 @@ export default function drawScratch(
 ): void {
   const VERTICAL_SPACING = controlValues[0];
 
+  canvasContext.fillStyle = "rgba(100,100,100,1)";
+
   const lines: Line[] = [];
 
   //make a starting line
@@ -24,7 +26,7 @@ export default function drawScratch(
   }
   lines.push(startingLine);
 
-  for (let y = 1; y < (height - 1) / 25; y++) {
+  for (let y = 1; y < /*(height - 1) / 50*/ 2; y++) {
     const newLine: Line = [];
 
     for (let x = 0; x < lines[lines.length - 1].length; x++) {
@@ -49,10 +51,24 @@ export default function drawScratch(
     const line = lines[i];
 
     const darkness = (i / lines.length) * 255;
-    const red = darkness;
+    const red = 255 - darkness;
     const green = 255 - darkness;
-    const blue = darkness;
-    const color = `rgb(${red}, ${green}, ${blue})`;
-    appendLine(canvasContext, line, curveBasis, color);
+    const blue = 255 - darkness;
+    const color = `rgb(${i * 255}, ${i * 255}, ${i * 255})`;
+
+    if (i === 1) {
+      appendLine(canvasContext, line, curveBasisClosed, color, 5);
+    } else if (i === 2) {
+      appendLine(canvasContext, line, curveBasisClosed, "#B46130", 2);
+    } else {
+      appendLine(canvasContext, line, curveBasisClosed, color, 1);
+    }
   }
+  canvasContext.fillStyle = "rgba(100,100,100,1)";
+  canvasContext.canvas.style.background = "#156B26";
+  canvasContext.canvas.style.background = "#649051";
+  canvasContext.canvas.style.background = "#73AB55";
+  canvasContext.canvas.style.background = "#5D8063";
+
+  //augie color: #B46130
 }
