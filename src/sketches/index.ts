@@ -18,6 +18,7 @@ import drawArpeggio from "./arpeggio";
 import drawBounce from "./bounce";
 import drawSwirlViz from "./swirlViz";
 import drawScratch from "./scratch";
+import drawSquiggleBorder from "./squiggleBorder";
 
 export enum ControlType {
   Number = "number",
@@ -103,6 +104,10 @@ export default [
   {
     linkName: "bounce",
     drawFunc: drawBounce,
+  },
+  {
+    linkName: "squiggleBorder",
+    drawFunc: drawSquiggleBorder,
   },
   {
     linkName: "scratch",

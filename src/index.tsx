@@ -5,6 +5,7 @@ import layouts, { Layout } from "./layouts/index";
 import SketchCanvas from "./layouts/SketchCanvas";
 import drawSwirlViz from "./sketches/swirlViz";
 import drawScratch from "./sketches/scratch";
+import drawSquiggleBorder from "./sketches/squiggleBorder";
 import Slider from "@mui/material/Slider";
 import styled from "@emotion/styled";
 
@@ -44,7 +45,7 @@ class App extends React.Component<
     super(props);
     this.state = {
       layout: SketchCanvas,
-      drawFunc: drawScratch,
+      drawFunc: drawSquiggleBorder,
       controls: sketches[sketches.length - 1].controls,
       controlValues: [5],
     };
