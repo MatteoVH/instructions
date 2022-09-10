@@ -34,6 +34,30 @@ export function appendLine(
   context.stroke();
 }
 
+export function drawCircle(
+  context: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  r: number,
+  color: string
+) {
+  context.beginPath();
+  context.ellipse(x, y, r, r, 0, 2 * Math.PI, 0);
+  context.fillStyle = color;
+  context.fill();
+}
+
+export function colorBackground(
+  context: CanvasRenderingContext2D,
+  width: number,
+  height: number,
+  color: string
+) {
+  context.rect(0, 0, width, height);
+  context.fillStyle = color;
+  context.fill();
+}
+
 export function generatePoint(width: number, height: number): Point {
   const x = Math.random() * width;
   const y = Math.random() * height;
